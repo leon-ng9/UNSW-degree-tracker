@@ -40,6 +40,8 @@ gem 'mechanize'
 gem 'carrierwave', '~> 0.10'
 # Use file_validators to verify file size
 gem 'file_validators'
+# Allow upload to dropbox
+gem 'carrierwave-dropbox'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
