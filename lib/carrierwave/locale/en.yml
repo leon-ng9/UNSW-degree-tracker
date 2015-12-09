@@ -1,0 +1,4 @@
+en:
+  errors:
+    messages:
+      extension_white_list_error: "!!ou are not allowed to upload %{extension} files, allowed types: %{allowed_types}"

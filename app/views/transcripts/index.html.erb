@@ -1,0 +1,27 @@
+<h1>Transcripts#index</h1>
+<p>Find me in app/views/transcripts/index.html.erb</p>
+<% if !flash[:notice].blank? %>
+  <div class="alert alert-info">
+  <%= flash[:notice] %>
+  </div>
+<% end %>
+<br />
+<%= link_to "New Transcript", new_transcript_path, class: "btn btn-primary" %>
+<br />
+<br />
+<table class="table table-bordered table-striped">
+  <thead>
+    <tr>
+      <th>Download Link</th>
+      <th>&nbsp;</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @transcripts.each do |transcript| %>
+      <tr>
+        <td><%= link_to "Download Transcript", transcript.attachment_url %></td>
+        <td><%= button_to "Delete",  transcript, method: :delete, class: "btn btn-danger", confirm: "Are you sure that you wish to delete?" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

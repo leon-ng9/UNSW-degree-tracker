@@ -1,0 +1,19 @@
+<h1>UNSW Degree Tracker</h1>
+<p>Upload your academic transcript PDF found <a href="https://my.unsw.edu.au/active/studentStatement/checkStatement.xml" target="_blank">here</a></p>
+<% if !@transcript.errors.empty? %>
+  <div class="alert alert-error">
+    <ul>
+      <% @transcript.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<div class="well">
+  <%= form_for @transcript, html: { multipart: true } do |f| %>
+    <%= f.label :attachment %>
+    <%= f.file_field :attachment %>
+    <%= f.submit "Upload", class: "btn btn-primary" %>
+  <% end %>
+</div>
