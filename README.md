@@ -1,5 +1,5 @@
 ## UNSW-degree-tracker
 
 UNSW Degree Tracker is a web application that processes UNSW academic transcripts to:
-* Determine completed and number of remaining core/elective/gen-ed courses
+* Determine number of completed and remaining core/elective/gen-ed courses to finish your degree
 * Analyse prerequisites to suggest courses for each category and stage
