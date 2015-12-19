@@ -1,4 +1,5 @@
 class TranscriptsController < ApplicationController
+  include TranscriptsHelper
   def index
     @transcripts = Transcript.all
   end
@@ -17,15 +18,22 @@ class TranscriptsController < ApplicationController
     end
   end
 
+  def show
+    @transcript = Transcript.find(params[:id])
+    @text = Transcript.get_info(@transcript)
+  end
   def destroy
     @transcript = Transcript.find(params[:id])
     File.delete(@transcript.attachment_url) if File.exist?(@transcript.attachment_url)
     #fail to remove the directory
+    # dir = @transcript.attachment_url.sub(File.basename(@transcript.attachment_url),"")
+    # remove_entry_secure(File.basename("/home/gumby/work/ruby.rb"), force = false)
     # dir = "/public"+@transcript.attachment_url.sub(/\/[^\/]*$/,'/')
     # Dir.rmdir(dir)
     @transcript.destroy
     redirect_to transcripts_path, notice:  "The transcript has been deleted."
   end
+
 
 private
   def transcript_params

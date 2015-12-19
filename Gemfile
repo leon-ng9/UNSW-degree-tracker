@@ -27,6 +27,8 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw]
 # Use Unicorn as the app server
 # gem 'unicorn'
 
+# pdf reader for processing
+gem 'pdf-reader', '~> 1.3', '>= 1.3.3'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
