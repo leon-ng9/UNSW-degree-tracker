@@ -19,6 +19,8 @@ class TranscriptsController < ApplicationController
 
   def destroy
     @transcript = Transcript.find(params[:id])
+    File.delete(@transcript.attachment_url) if File.exist?(@transcript.attachment_url)
+    FileUtils.rm_rf(@transcript.attachment_url.gsub(/\/[^\/]*/,''))
     @transcript.destroy
     redirect_to transcripts_path, notice:  "The transcript has been deleted."
   end
