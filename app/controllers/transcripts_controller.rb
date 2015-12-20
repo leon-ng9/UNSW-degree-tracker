@@ -9,10 +9,12 @@ class TranscriptsController < ApplicationController
   end
 
   def create
-    @transcript = Transcript.new(transcript_params)
 
+    @transcript = Transcript.new(transcript_params)
+    reader = PDF::Reader.new(transcript_params[:attachment])
+    result = reader.text
     if @transcript.save
-      redirect_to result_path, notice: "The transcript has been uploaded."
+      redirect_to result_path, notice: "The transcript has been uploaded. #{result}"
     else
       render "new"
     end
